@@ -1,6 +1,6 @@
-using Game.State;
 using UnityEngine;
 using UnityEngine.UI;
+using Game.States;
 
 namespace Game.UnityEngine.UnityState
 {

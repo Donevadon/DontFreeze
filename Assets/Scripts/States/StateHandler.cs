@@ -1,6 +1,6 @@
 using System;
 
-namespace Game
+namespace Game.States
 {
     public delegate void StateHandler(object sender,StateEvent arg);
 }

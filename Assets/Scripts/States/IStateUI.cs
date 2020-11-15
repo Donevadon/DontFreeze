@@ -1,4 +1,4 @@
-namespace Game
+namespace Game.States
 {
     public interface IStateUI
     {

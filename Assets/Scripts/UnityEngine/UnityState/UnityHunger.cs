@@ -2,8 +2,13 @@ using Game.States;
 
 namespace Game.UnityEngine.UnityState
 {
-    internal class UnityStamina : Stamina
+    internal class UnityHunger : Hunger
     {
+        public UnityHunger()
+            :base()
+        {
+        }
+
         protected override IObservable GetRecovery()
         {
             return Recovery.GetInstance();

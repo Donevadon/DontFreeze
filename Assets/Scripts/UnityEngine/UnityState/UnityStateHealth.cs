@@ -1,5 +1,5 @@
+using Game.States;
 using UnityEngine;
-using Game.State;
 
 namespace Game.UnityEngine.UnityState
 {
@@ -8,17 +8,19 @@ namespace Game.UnityEngine.UnityState
         protected override void Initialize()
         {
             stamina = new UnityStamina();
-            health = new Health();
+            health = new UnityHealth();
+            hunger = new UnityHunger();
+            thirst = new UnityThirst();
             UI = UICanvas.GetInstance();
             SubscribeEvent();
         }
 
         private void SubscribeEvent()
         {
-            stamina.StaminaChanged += UI.StaminaChangeHandler;
-            health.HealthChanged += UI.HealthChangeHandler;
-            //thirst.ThirstChanged += UI.ThirstChangeHandler;
-            //hunger.HungerChanged += UI.ThirstChangeHandler;
+            stamina.StateChanged += UI.StaminaChangeHandler;
+            health.StateChanged += UI.HealthChangeHandler;
+            thirst.StateChanged += UI.ThirstChangeHandler;
+            hunger.StateChanged += UI.HungerChangeHandler;
         }
     }
 }
