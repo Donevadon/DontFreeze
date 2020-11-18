@@ -27,24 +27,24 @@ namespace Game.UnityEngine.UnityState
             canvas = this;   
         }
 
-        public void HealthChangeHandler(object sender, StateEvent state)
+        public void HealthChangeHandler(object sender, float state)
         {
-            health.fillAmount = state.State / 100;
+            health.fillAmount = state / 100;
         }
 
-        public void HungerChangeHandler(object sender, StateEvent state)
+        public void HungerChangeHandler(object sender, float state)
         {
-            hunger.fillAmount = state.State / 100;
+            hunger.fillAmount = state / 100;
         }
 
-        public void StaminaChangeHandler(object sender, StateEvent state)
+        public void StaminaChangeHandler(object sender, float state)
         {
-            stamina.fillAmount = state.State / 100;
+            stamina.fillAmount = state / 100;
         }
 
-        public void ThirstChangeHandler(object sender, StateEvent state)
+        public void ThirstChangeHandler(object sender, float state)
         {
-            thirst.fillAmount = state.State / 100;
+            thirst.fillAmount = state / 100;
         }
     }
 }

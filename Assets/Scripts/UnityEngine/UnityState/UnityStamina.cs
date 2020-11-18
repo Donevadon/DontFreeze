@@ -2,7 +2,7 @@ using Game.States;
 
 namespace Game.UnityEngine.UnityState
 {
-    internal class UnityStamina : Stamina
+    internal class UnityStamina : StaminaState
     {
         protected override IObservable GetRecovery()
         {

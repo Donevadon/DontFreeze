@@ -1,24 +1,25 @@
 using UnityEngine;
+using System;
 
 namespace Game.States
 {
     public abstract class State : IObserver
     {
         protected float quantity = 100;
-        protected virtual float Quantity
+        public virtual float Quantity
         {
             get => quantity;
-            set
+            protected set
             {
                 if(value > maxValue) quantity = maxValue;
                 else if(value < 0) quantity = 0;
                 else quantity = value;
-                StateChanged?.Invoke(this,new StateEvent(Quantity));
+                StateChanged?.Invoke(this,Quantity);
             }
         }
         protected float maxValue = 100;
         protected IObservable recovery;
-        public virtual event StateHandler StateChanged;
+        public virtual event EventHandler<float> StateChanged;
         public State()
         {
             recovery = GetRecovery();

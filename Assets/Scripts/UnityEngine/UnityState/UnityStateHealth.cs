@@ -12,15 +12,6 @@ namespace Game.UnityEngine.UnityState
             hunger = new UnityHunger();
             thirst = new UnityThirst();
             UI = UICanvas.GetInstance();
-            SubscribeEvent();
-        }
-
-        private void SubscribeEvent()
-        {
-            stamina.StateChanged += UI.StaminaChangeHandler;
-            health.StateChanged += UI.HealthChangeHandler;
-            thirst.StateChanged += UI.ThirstChangeHandler;
-            hunger.StateChanged += UI.HungerChangeHandler;
         }
     }
 }

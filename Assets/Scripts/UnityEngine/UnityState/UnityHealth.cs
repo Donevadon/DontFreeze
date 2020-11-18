@@ -2,13 +2,8 @@ using Game.States;
 
 namespace Game.UnityEngine.UnityState
 {
-    internal class UnityHealth : Health
+    internal class UnityHealth : HealthState
     {
-        public UnityHealth()
-            :base()
-        {
-        }
-
         protected override IObservable GetRecovery()
         {
             return Recovery.GetInstance();

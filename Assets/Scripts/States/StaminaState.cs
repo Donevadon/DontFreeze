@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Game.States
 {
-    public abstract class Stamina : State
+    public abstract class StaminaState : State
     {
         protected float recover = 0.01f;
         protected float cost = 0.1f;
 
-        public Stamina()
+        public StaminaState()
             :base()
         {
             StateChanged += Recover;
@@ -24,7 +24,7 @@ namespace Game.States
             }
         }
 
-        private void Recover(object sender,StateEvent state)
+        private void Recover(object sender,float state)
         {
             recovery.Add(this);
         }

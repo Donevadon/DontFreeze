@@ -1,6 +1,6 @@
 namespace Game.States
 {
-    public abstract class Health : State
+    public abstract class HealthState : State
     {
         protected override void ObserverAction()
         {

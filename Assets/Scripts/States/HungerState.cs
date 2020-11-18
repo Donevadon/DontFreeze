@@ -1,43 +1,34 @@
+using System;
+
 namespace Game.States
 {
-    public abstract class Thirst : State
+    public abstract class HungerState : State
     {
-        protected override float Quantity
+        public override float Quantity
         {
             get => quantity;
-            set
+            protected set
             {
                 if(value <= 0) 
                 {
                     quantity = 0;
-                    StateEnded?.Invoke(this,new StateEvent(damage));
+                    StateEnded?.Invoke(this,damage);
                 }
                 else if(value > maxValue) quantity = maxValue;
                 else quantity = value;
-                StateChanged?.Invoke(this,new StateEvent(Quantity));
+                StateChanged?.Invoke(this,Quantity);
             }
         }
         private float damage;
         private float Consumption{get;set;} = 0.1f;
-        public event StateHandler StateEnded;
-        public override event StateHandler StateChanged;
+        public event EventHandler<float> StateEnded;
+        public override event EventHandler<float> StateChanged;
 
-        public Thirst()
+        public HungerState()
             :base()
         {
             recovery.Add(this);
         }
-
-        public void Recover(float water)
-        {
-            Quantity += water;
-        }
-
-        public void Remove(float value)
-        {
-            Quantity -= value;
-        }
-
 
         protected override void ObserverAction()
         {

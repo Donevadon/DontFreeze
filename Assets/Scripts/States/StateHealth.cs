@@ -2,16 +2,17 @@
 {
     public abstract class StateHealth
     {
-        protected Health health;
-        protected Thirst thirst;
-        protected Stamina stamina;
-        protected Hunger hunger;
+        protected HealthState health;
+        protected ThirstState thirst;
+        protected StaminaState stamina;
+        protected HungerState hunger;
         protected IStateUI UI;
         
 
         public StateHealth()
         {
             Initialize();
+            SubscribeEvent();
         }
 
         public bool RecoveryHealth(float HP)
@@ -29,6 +30,14 @@
             bool result = stamina.SpeedUp();
             return result;
         }
+        protected virtual void SubscribeEvent()
+        {
+            stamina.StateChanged += UI.StaminaChangeHandler;
+            health.StateChanged += UI.HealthChangeHandler;
+            thirst.StateChanged += UI.ThirstChangeHandler;
+            hunger.StateChanged += UI.HungerChangeHandler;
+        }
+
         protected abstract void Initialize();
     }
 }
