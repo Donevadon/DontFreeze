@@ -1,6 +1,6 @@
 ﻿namespace Game.States
 {
-    public abstract class StateHealth
+    public class StateFacade
     {
         protected HealthState health;
         protected ThirstState thirst;
@@ -9,9 +9,17 @@
         protected IStateUI UI;
         
 
-        public StateHealth()
+        public StateFacade(IStateUI UI,
+            HealthState health,
+            ThirstState thirst,
+            StaminaState stamina,
+            HungerState hunger)
         {
-            Initialize();
+            this.UI = UI;
+            this.health = health;
+            this.thirst = thirst;
+            this.stamina = stamina;
+            this.hunger = hunger;
             SubscribeEvent();
         }
 
@@ -37,7 +45,5 @@
             thirst.StateChanged += UI.ThirstChangeHandler;
             hunger.StateChanged += UI.HungerChangeHandler;
         }
-
-        protected abstract void Initialize();
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Game.LivingEntity;
 using UnityEngine;
 
 namespace Game.UnityEngine.UnityControl
@@ -10,24 +9,27 @@ namespace Game.UnityEngine.UnityControl
     }
     public class Movement : IMove
     {
-        private float speed;
+        private MovementSetting setting;
         private Rigidbody2D rigidbody2d;
         private Transform moveObject;
         private IRotate rotation;
-        public float AccelerationUp { get;set;}
-        public float AccelerationRight { get; set; }
-        public float Speed { get => speed; set => speed = value; }
+        public float AccelerationUp {private get;set;}
+        public float AccelerationRight {private get; set; }
+        public float Speed { get => speed;private set => speed = value; }
+        private float speed;
 
-        public Movement(Transform moveObj,Rigidbody2D rigidbody,IRotate rotation)
+        public Movement(Transform moveObj,Rigidbody2D rigidbody,IRotate rotation,MovementSetting settings)
         {
             rigidbody2d = rigidbody;
             this.rotation = rotation;
             moveObject = moveObj;
+            setting = settings;
             Initialize();
         }
         private void Initialize()
         {
             rigidbody2d.gravityScale = 0;
+            Speed = setting.SpeedWalk;
         }
         public void Move(float addMass)
         {
@@ -38,6 +40,12 @@ namespace Game.UnityEngine.UnityControl
                 (Vector2.right * AccelerationRight * Speed * Time.deltaTime))
             );
             rotation.ChangeRotate(AccelerationUp,AccelerationRight);
+        }
+
+        public void Run(bool active)
+        {
+            if(active) Speed = setting.SpeedRun;
+            else Speed = setting.SpeedWalk;
         }
     }
 }

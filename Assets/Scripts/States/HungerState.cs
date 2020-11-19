@@ -2,7 +2,7 @@ using System;
 
 namespace Game.States
 {
-    public abstract class HungerState : State
+    public class HungerState : State
     {
         public override float Quantity
         {
@@ -24,8 +24,8 @@ namespace Game.States
         public event EventHandler<float> StateEnded;
         public override event EventHandler<float> StateChanged;
 
-        public HungerState()
-            :base()
+        public HungerState(IObservable observable)
+            :base(observable)
         {
             recovery.Add(this);
         }

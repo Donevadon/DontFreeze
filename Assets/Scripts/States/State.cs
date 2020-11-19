@@ -20,12 +20,10 @@ namespace Game.States
         protected float maxValue = 100;
         protected IObservable recovery;
         public virtual event EventHandler<float> StateChanged;
-        public State()
+        public State(IObservable observable)
         {
-            recovery = GetRecovery();
+            recovery = observable;
         }
-        protected abstract IObservable GetRecovery();
-
         protected abstract void ObserverAction();
 
         void IObserver.Action()

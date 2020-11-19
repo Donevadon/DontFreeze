@@ -1,7 +1,11 @@
 namespace Game.States
 {
-    public abstract class HealthState : State
+    public class HealthState : State
     {
+        public HealthState(IObservable observable) : base(observable)
+        {
+        }
+
         protected override void ObserverAction()
         {
             

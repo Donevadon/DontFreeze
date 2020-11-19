@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Game.States
 {
-    public abstract class StaminaState : State
+    public class StaminaState : State
     {
         protected float recover = 0.01f;
         protected float cost = 0.1f;
 
-        public StaminaState()
-            :base()
+        public StaminaState(IObservable observable)
+            :base(observable)
         {
             StateChanged += Recover;
         }
