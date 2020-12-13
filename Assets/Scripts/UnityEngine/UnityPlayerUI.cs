@@ -1,5 +1,5 @@
 ﻿using System;
-using Game.LivingEntity;
+using Game.Entities;
 using Game.UnityEngine.UnityControl;
 using UnityEngine;
 
@@ -17,13 +17,6 @@ namespace Game.UnityEngine
         }
 
         public static UnityPlayerUI GetInstance() => playerUI;
-        public IMove MoveInstance()
-        {
-            return new Movement(transform,
-                GetComponent<Rigidbody2D>(),
-                new Rotation(),
-                Resources.Load<MovementSetting>("Settings/PlayerMovementSetting"));
-        }
 
         void ITakingDamage.TakeDamage(float damage)
         {

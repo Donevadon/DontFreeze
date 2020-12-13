@@ -1,35 +1,20 @@
+using System;
+using Game.Entities;
 using UnityEngine;
 
 namespace Game.UnityEngine.UnityControl
 {
-    public class Rotation : MonoBehaviour, IRotate
+    public class Rotation : IRotate
     {
-        private SpriteRenderer spriteRenderer;
-        private Sprite upSprite;
-        private bool isUp;
-        private Sprite bottomSprite;
-        private bool isBottom;
-        private Sprite rightSprite;
-        private bool isRight;
-        private Sprite leftSprite;
-        private bool isLeft;
-
-        private void Awake() 
+        private Animator animator;
+        public Rotation(Animator anim)
         {
-            LoadSprite(); 
+            animator = anim;
         }
-
-        private void LoadSprite()
-        {
-            upSprite = Resources.Load<Sprite>("Sprites/Player/Up");
-            bottomSprite = Resources.Load<Sprite>("Sprites/Player/Bottom");
-            leftSprite = Resources.Load<Sprite>("Sprites/Player/Left");
-            rightSprite = Resources.Load<Sprite>("Sprites/Player/Right");
-        }
-
         public void ChangeRotate(float accelerationUp, float accelerationRight)
         {
-            
+            animator.SetInteger("X",(int)(Math.Ceiling((double)accelerationRight)));
+            animator.SetInteger("Y",(int)(Math.Ceiling((double)accelerationUp)));
         }
 
     }

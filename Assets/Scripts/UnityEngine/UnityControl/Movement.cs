@@ -1,12 +1,8 @@
-﻿using Game.LivingEntity;
+﻿using Game.Entities;
 using UnityEngine;
 
 namespace Game.UnityEngine.UnityControl
 {
-    public interface IRotate
-    {
-        void ChangeRotate(float accelerationUp,float accelerationRight);
-    }
     public class Movement : IMove
     {
         private MovementSetting setting;
